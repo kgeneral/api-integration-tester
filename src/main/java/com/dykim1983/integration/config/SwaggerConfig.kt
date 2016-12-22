@@ -15,11 +15,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @Import(SpringDataRestConfiguration::class)
 open class SwaggerConfig {
     @Bean
-    open fun api(): Docket {
-        return Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build()
-    }
+    open fun api(): Docket = Docket(DocumentationType.SWAGGER_2)
+            .select()
+            .apis(RequestHandlerSelectors.any())
+            .paths(PathSelectors.any())
+            .build()
 }
