@@ -45,6 +45,7 @@ dependencies {
 	compile("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}")
 	compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
 	compile('com.h2database:h2')
+	runtime('mysql:mysql-connector-java')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
