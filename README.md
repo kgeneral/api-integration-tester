@@ -25,6 +25,7 @@
 - http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 - https://blog.gradle.org/kotlin-meets-gradle
 - https://github.com/sdeleuze/spring-boot-kotlin-demo
+- https://github.com/spring-projects/spring-boot/tree/v1.4.2.RELEASE/spring-boot-samples/spring-boot-sample-flyway
 
 ## Advanced Topics for Kotlin
 - https://kotlinlang.org/docs/reference/java-interop.html
