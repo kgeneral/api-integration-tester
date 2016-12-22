@@ -6,7 +6,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Item (
+class Member(
         var name: String = "",
         @Id @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Long = 0)
