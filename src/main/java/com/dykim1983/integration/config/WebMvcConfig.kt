@@ -30,13 +30,7 @@ open class WebMvcConfig : WebMvcConfigurerAdapter() {
         converters.add(jsonConverter())
     }
 
-    private fun jsonConverter(): MappingJackson2HttpMessageConverter {
-        val jackson2HttpMessageConverter = MappingJackson2HttpMessageConverter()
-        jackson2HttpMessageConverter.setPrettyPrint(true)
+    private fun jsonConverter(): MappingJackson2HttpMessageConverter =
+            MappingJackson2HttpMessageConverter(ObjectMapper())
 
-        val objectMapper = ObjectMapper()
-
-        jackson2HttpMessageConverter.objectMapper = objectMapper
-        return jackson2HttpMessageConverter
-    }
 }
