@@ -41,6 +41,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-jooq')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-web-services')
+	compile("org.apache.commons:commons-dbcp2:2.1.1")
 	compile("io.springfox:springfox-swagger2:${springfoxSwaggerVersion}")
 	compile("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}")
 	compile("io.springfox:springfox-data-rest:${springfoxSwaggerVersion}")

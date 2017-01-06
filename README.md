@@ -2,8 +2,6 @@
 
 # Api Integration Tester
 
-# Test
-
 ## Run with embeded Tomcat
 - gradle 의 'bootRun' task 수행. 수행시 아래 JVM 환경 변수 추가
 - -Dspring.profiles.active=localhost -Dserver.port=9000
