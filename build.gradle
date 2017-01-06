@@ -2,10 +2,13 @@ buildscript {
 	ext.springfoxSwaggerVersion = "2.6.1"
 	ext.kotlinVersion = '1.0.5-3'
 	ext {
-		springBootVersion = '1.4.2.RELEASE'
+		springBootVersion = '2.0.0.BUILD-SNAPSHOT'
 	}
 	repositories {
 		mavenCentral()
+		maven {
+			url 'https://repo.spring.io/libs-snapshot'
+		}
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -28,6 +31,9 @@ targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	maven {
+		url 'https://repo.spring.io/libs-snapshot'
+	}
 }
 
 configurations {
