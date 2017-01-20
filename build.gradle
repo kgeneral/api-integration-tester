@@ -1,33 +1,41 @@
-buildscript {
-	ext.springfoxSwaggerVersion = "2.6.1"
-	ext.kotlinVersion = '1.0.5-3'
-	ext {
-		springBootVersion = '1.4.2.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-	}
+plugins {
+	id 'org.gradle.wrapper'
+	id 'org.gradle.java'
+	id 'org.gradle.war'
+	id 'idea'
+	id 'eclipse-wtp'
+	id 'org.springframework.boot' version '1.4.3.RELEASE'
+	id "nebula.kotlin" version "1.0.6"
+	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.7'
 }
 
-apply plugin: 'kotlin'
-apply plugin: 'java'
-apply plugin: 'eclipse-wtp'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
+ext.springfoxSwaggerVersion = "2.6.1"
+ext.querydslVersion = "4.1.4"
 
 war {
 	baseName = 'api-integration-tester'
 	version = '0.0.1-SNAPSHOT'
 }
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir "$buildDir/generated-sources/apt"
+		}
+	}
+}
+
+querydsl {
+	library = "com.querydsl:querydsl-apt:${querydslVersion}"
+	querydslSourcesDir = "$buildDir/generated-sources/apt"
+	jpa = true
 }
 
 configurations {
@@ -37,15 +45,14 @@ configurations {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
-	compile('org.springframework.boot:spring-boot-starter-jooq')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-web-services')
+	compile('org.springframework.data:spring-data-rest-hal-browser')
 	compile("io.springfox:springfox-swagger2:${springfoxSwaggerVersion}")
 	compile("io.springfox:springfox-swagger-ui:${springfoxSwaggerVersion}")
 	compile("io.springfox:springfox-data-rest:${springfoxSwaggerVersion}")
-	compile("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
+	compile("org.jetbrains.kotlin:kotlin-stdlib:1.0.6")
     compile('org.flywaydb:flyway-core')
+	compile("com.querydsl:querydsl-jpa:${querydslVersion}")
 	compile('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
